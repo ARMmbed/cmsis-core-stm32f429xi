@@ -14,6 +14,8 @@
   "extraIncludes": [
     "cmsis-core-st-stm32f429xi"
   ],
-  "dependencies": {},
+  "dependencies": {
+      "cmsis-core" : "*"
+  },
   "targetDependencies": {}
 }
