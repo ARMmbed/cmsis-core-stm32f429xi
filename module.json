@@ -1,6 +1,6 @@
 {
   "name": "cmsis-core-st-stm32f429xi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CMSIS Core module for stm32f429xi microcontrollers",
   "keywords": [],
   "author": "Brendan Moran <brendan.moran@arm.com>",
@@ -15,7 +15,7 @@
     "cmsis-core-st-stm32f429xi"
   ],
   "dependencies": {
-      "cmsis-core" : "*"
+    "cmsis-core": "*"
   },
   "targetDependencies": {}
 }
