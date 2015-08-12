@@ -7,8 +7,8 @@
   "homepage": "https://github.com/ARMmbed/cmsis-core-st-stm32f429xi",
   "licenses": [
     {
-      "url": "https://spdx.org/licenses/Apache-2.0",
-      "type": "Apache-2.0"
+      "url": "https://spdx.org/licenses/BSD-3-Clause",
+      "type": "BSD-3-Clause"
     }
   ],
   "extraIncludes": [
