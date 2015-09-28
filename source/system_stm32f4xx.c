@@ -81,12 +81,12 @@
 #include "stm32f4xx.h"
 #include "hal_tick.h"
 
-#ifndef YOTTA_CFG_HARDWARE_EXT_CLK
-#define YOTTA_CFG_HARDWARE_EXT_CLK (8000000)
+#ifndef YOTTA_CFG_HARDWARE_EXTERNALCLOCK
+#define YOTTA_CFG_HARDWARE_EXTERNALCLOCK (8000000)
 #endif
 
 #if !defined  (HSE_VALUE)
-  #define HSE_VALUE    ((uint32_t)(YOTTA_CFG_HARDWARE_EXT_CLK)) /*!< Default value of the External oscillator in Hz */
+  #define HSE_VALUE    ((uint32_t)(YOTTA_CFG_HARDWARE_EXTERNALCLOCK)) /*!< Default value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 
 #if !defined  (HSI_VALUE)
