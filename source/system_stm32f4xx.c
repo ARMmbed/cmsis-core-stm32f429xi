@@ -82,7 +82,7 @@
 #include "hal_tick.h"
 
 #ifndef YOTTA_CFG_HARDWARE_EXTERNALCLOCK
-#define YOTTA_CFG_HARDWARE_EXTERNALCLOCK (8000000)
+#error A "config":{"hardware":{"externalClock":"<FREQ>"}} entry is required in either target.json or config.json
 #endif
 
 #if defined(HSE_VALUE)
