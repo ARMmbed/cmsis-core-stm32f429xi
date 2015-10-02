@@ -89,6 +89,9 @@
 #endif
 
 #else
+#if defined(HSE_VALUE) && (HSE_VALUE != YOTTA_CFG_HARDWARE_EXTERNALCLOCK)
+#warning HSE_VALUE ignored, using yotta_config values instead
+#endif
 #undef  HSE_VALUE
 #define HSE_VALUE    ((uint32_t)(YOTTA_CFG_HARDWARE_EXTERNALCLOCK)) /*!< Default value of the External oscillator in Hz */
 #endif
