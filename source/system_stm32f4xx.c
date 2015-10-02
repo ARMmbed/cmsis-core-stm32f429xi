@@ -81,12 +81,13 @@
 #include "stm32f4xx.h"
 #include "hal_tick.h"
 
+#ifndef YOTTA_CFG_HARDWARE_EXTERNALCLOCK
+#warning A "config":{"hardware":{"externalClock":"<FREQ>"}} entry is required in either target.json or config.json
+
 #if defined(HSE_VALUE)
 #warning HSE_VALUE is deprecated.  Define hardware::externalClock with yotta config instead.
 #endif
 
-#ifndef YOTTA_CFG_HARDWARE_EXTERNALCLOCK
-#warning A "config":{"hardware":{"externalClock":"<FREQ>"}} entry is required in either target.json or config.json
 #else
 #undef  HSE_VALUE
 #define HSE_VALUE    ((uint32_t)(YOTTA_CFG_HARDWARE_EXTERNALCLOCK)) /*!< Default value of the External oscillator in Hz */
