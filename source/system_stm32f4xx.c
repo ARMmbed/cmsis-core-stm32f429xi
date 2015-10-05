@@ -89,7 +89,7 @@
 #endif
 
 #else
-#if defined(HSE_VALUE) && (HSE_VALUE != YOTTA_CFG_HARDWARE_EXTERNALCLOCK)
+#if defined(HSE_VALUE)
 #warning HSE_VALUE ignored, using yotta_config values instead
 #endif
 #undef  HSE_VALUE
