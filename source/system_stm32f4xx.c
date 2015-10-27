@@ -133,9 +133,12 @@
 
 /*!< Uncomment the following line if you need to relocate your vector Table in
      Internal SRAM. */
+/* note: if uVisor is present the definition must go in system_init_pre.c */
+#ifdef YOTTA_CFG_UVISOR_PRESENT
 /* #define VECT_TAB_SRAM */
 #define VECT_TAB_OFFSET  0x00 /*!< Vector Table base offset field. 
                                    This value must be a multiple of 0x200. */
+#endif /* ndef YOTTA_CFG_UVISOR_PRESENT */
 /******************************************************************************/
 
 /**
@@ -198,10 +201,11 @@ void SystemClock_Config(void);
   */
 void SystemInit(void)
 {
-  /* FPU settings ------------------------------------------------------------*/
-  #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
-    SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
-  #endif
+  /* Include the code that had been removed if uVisor is not present */
+#ifndef YOTTA_CFG_UVISOR_PRESENT
+  SystemInitPre();
+#endif /* ndef YOTTA_CFG_UVISOR_PRESENT */
+
   /* Reset the RCC clock configuration to the default reset state ------------*/
   /* Set HSION bit */
   RCC->CR |= (uint32_t)0x00000001;
@@ -224,13 +228,6 @@ void SystemInit(void)
 #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
   SystemInit_ExtMemCtl(); 
 #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
-
-  /* Configure the Vector Table location add offset address ------------------*/
-#ifdef VECT_TAB_SRAM
-  SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
-#else
-  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
-#endif
 
   /* Configure the Cube driver */
   SystemCoreClock = 16000000; // At this stage the HSI is used as system clock
