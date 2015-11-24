@@ -65,6 +65,17 @@
   ******************************************************************************
   */
 
+#ifndef YOTTA_CFG_HARDWARE_EXTERNALCLOCK
+  #warning A "config":{"hardware":{"externalClock":"<FREQ>"}} entry is required in either target.json or config.json
+  #if defined(HSE_VALUE)
+    #warning HSE_VALUE is deprecated.  Define hardware::externalClock with yotta config instead.
+  #endif
+#else
+  #if defined(HSE_VALUE)
+    #warning HSE_VALUE ignored, using yotta_config values instead
+  #endif
+#endif
+
 /** @addtogroup CMSIS
   * @{
   */
